@@ -35,16 +35,13 @@ app.put("/repositories/:id", (request, response) => {
    if(UserIndex < 0){
      return response.status(400).json({error : "User not founded"})
    }
-   if(request.body.likes !== repositories[UserIndex].likes){
-    //return response.json({"likes" :repositories[UserIndex].likes })
-    likes = repositories[UserIndex].likes
-  }
+
    const new_user = {
      id,
      title,
      url,
      techs,
-     likes
+     likes : repositories[UserIndex].likes
    }
    repositories[UserIndex] = new_user
    return response.json(new_user)
